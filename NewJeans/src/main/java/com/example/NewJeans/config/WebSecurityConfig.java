@@ -1,5 +1,7 @@
 package com.example.NewJeans.config;
 
+import com.example.NewJeans.security.JwtAuthFilter;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -13,7 +15,9 @@ import org.springframework.web.filter.CorsFilter;
  * 인증 : 토큰 방식
  * */
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class WebSecurityConfig {
+    private final JwtAuthFilter jwtAuthFilter;
     @Bean
     public BCryptPasswordEncoder encoder(){
         return new BCryptPasswordEncoder();
